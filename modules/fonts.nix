@@ -1,9 +1,12 @@
-{ config, lib, pkgs, ...}:
-
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 with lib; let
   cfg = config.features.desktop.fonts;
-in
-{
+in {
   options.features.desktop.fonts.enable =
     mkEnableOption "install additional fonts for desktop apps";
 
@@ -11,9 +14,9 @@ in
     fonts.fontconfig = {
       enable = true;
       defaultFonts = {
-        monospace = [ "JetBrainsMono Nerd Font" ];
-        sansSerif = [ "Noto Sans" ];
-        serif = [ "Noto Serif" ];
+        monospace = ["JetBrainsMono Nerd Font"];
+        sansSerif = ["Noto Sans"];
+        serif = ["Noto Serif"];
       };
     };
 
@@ -26,7 +29,7 @@ in
       font-manager
       font-awesome_5
       font-awesome
-      noto-fonts-emoji
+      noto-fonts-color-emoji
       noto-fonts
       jetbrains-mono
     ];
