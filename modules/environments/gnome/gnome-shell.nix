@@ -381,5 +381,14 @@ in {
         };
       };
     })
+    (lib.mkIf (!(config.stylix.enable or false)) {
+      # Set default dconf settings only when stylix is not managing themes
+      dconf.settings = {
+        "org/gnome/desktop/interface" = {
+          color-scheme = "prefer-dark";
+          gtk-theme = "Adwaita-dark";
+        };
+      };
+    })
   ]);
 }

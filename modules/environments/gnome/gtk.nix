@@ -98,12 +98,12 @@ in {
       gtk3.extraCss = gtkCss;
       gtk4.extraCss = gtkCss;
 
-      theme = {
+      theme = mkIf (!(config.stylix.enable or false)) {
         name = "Adwaita-dark";
         package = pkgs.gnome-themes-extra;
       };
 
-      iconTheme = {
+      iconTheme = mkIf (!(config.stylix.enable or false)) {
         name = "Adwaita";
         package = pkgs.adwaita-icon-theme;
       };

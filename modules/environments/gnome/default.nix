@@ -45,10 +45,6 @@ in {
         ];
       };
 
-      "org/gnome/desktop/interface" = {
-        color-scheme = "prefer-dark";
-        gtk-theme = "Adwaita-dark";
-      };
 
       "org/gnome/desktop/background" = mkIf (cfg.background != null && cfg.backgroundDark != null) {
         picture-uri = builtins.toString cfg.background;
