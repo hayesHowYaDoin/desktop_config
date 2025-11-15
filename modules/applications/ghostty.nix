@@ -23,7 +23,7 @@ in {
       example = ../assets/shaders/starfield-colors.glsl;
       description = "Set custom shader from glsl file.";
     };
-    disableWindowDecoration = mkEnableOption "Whether or not to remove window decorations";
+    windowDecoration = mkEnableOption "Whether or not to enable window decorations";
   };
 
   config = mkIf cfg.enable {
@@ -35,7 +35,7 @@ in {
         else pkgs.ghostty;
       settings =
         {
-          window-decoration = !cfg.disableWindowDecoration;
+          window-decoration = cfg.windowDecoration;
           background-opacity = cfg.opacity;
         }
         // lib.optionalAttrs (config.colorScheme or null != null) {
