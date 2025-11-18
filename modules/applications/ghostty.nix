@@ -36,6 +36,7 @@ in {
         else if !cfg.preinstalled
         then pkgs.ghostty
         else null;
+      systemd.enable = !cfg.preinstalled;
       settings =
         {
           window-decoration = cfg.windowDecoration;
