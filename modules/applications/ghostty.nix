@@ -10,6 +10,7 @@ with lib; let
 in {
   options.features.desktop.applications.ghostty = {
     enable = mkEnableOption "Enable ghostty configuration.";
+    preinstalled = mkEnableOption "Whether or not ghostty is already installed on the host";
     nixGL = mkEnableOption "Whether or not to wrap ghostty with nixGL.";
     opacity = mkOption {
       type = types.float;
@@ -30,9 +31,11 @@ in {
     programs.ghostty = {
       enable = true;
       package =
-        if cfg.nixGL
+        if cfg.nixGL && !cfg.preinstalled
         then wrappedGhostty
-        else pkgs.ghostty;
+        else if !cfg.preinstalled
+        then pkgs.ghostty
+        else null;
       settings =
         {
           window-decoration = cfg.windowDecoration;
